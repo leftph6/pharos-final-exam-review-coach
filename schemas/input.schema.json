@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinalExamReviewCoachInput",
+  "type": "object",
+  "required": ["subject", "task"],
+  "additionalProperties": false,
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "Course or exam subject name."
+    },
+    "task": {
+      "type": "string",
+      "enum": [
+        "build_subject_profile",
+        "compress_exam_portrait",
+        "build_operator_library",
+        "answer_exam_question",
+        "diagnose_student_attempt",
+        "generate_reinforcement_pack"
+      ]
+    },
+    "workspace_path": {
+      "type": "string",
+      "description": "Absolute or agent-resolved path to the subject materials."
+    },
+    "materials": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional explicit file/folder list to prioritize."
+    },
+    "question": {
+      "type": "string",
+      "description": "Optional exam item or student question."
+    },
+    "student_attempt": {
+      "type": "string",
+      "description": "Optional student answer draft for diagnosis."
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "language": { "type": "string", "default": "zh-CN" },
+        "time_budget_minutes": { "type": "number", "minimum": 1 },
+        "exam_date": { "type": "string" },
+        "output_format": {
+          "type": "string",
+          "enum": ["markdown", "json", "tex", "pdf-ready-markdown"]
+        }
+      }
+    }
+  }
+}
