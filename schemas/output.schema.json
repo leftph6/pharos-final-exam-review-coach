@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FinalExamReviewCoachOutput",
+  "type": "object",
+  "required": ["source_basis", "task_mode", "answer"],
+  "additionalProperties": false,
+  "properties": {
+    "source_basis": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Files, materials, or evidence used."
+    },
+    "task_mode": {
+      "type": "string",
+      "description": "Executed action name."
+    },
+    "question_type": {
+      "type": "string",
+      "description": "Recognized exam slot, such as T3 or short-answer template."
+    },
+    "operator_chain": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Ordered operator IDs used in the answer."
+    },
+    "answer": {
+      "type": "string",
+      "description": "Exam-ready explanation, diagnosis, or artifact path."
+    },
+    "diagnosis": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "识题错误",
+          "算子误调",
+          "步骤缺口",
+          "计算/符号错误",
+          "表达失分",
+          "速度问题"
+        ]
+      }
+    },
+    "next_drills": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Targeted reinforcement items."
+    },
+    "artifacts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Generated files, if any."
+    }
+  }
+}
