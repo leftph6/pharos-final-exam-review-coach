@@ -1,0 +1,4 @@
+interface:
+  display_name: "Final Exam Review Coach"
+  short_description: "Build subject-specific exam review loops"
+  default_prompt: "Use $final-exam-review-coach to organize this subject's exam review, answer questions, and reinforce weak points."
